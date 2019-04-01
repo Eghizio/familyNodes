@@ -1,5 +1,3 @@
-
-
 //Canvas Setup
 var canvas = document.getElementById('canvasik');
 var c = canvas.getContext('2d');
@@ -10,8 +8,6 @@ c.translate(canvas.width/2, canvas.height/2);
 const parentNodes = 5;
 const radius = 150;
 
-// drawCircle(0,0,150);
-// let angle = 360/parentNodes;
 
 let Parent = new Person(0, 0);
 
@@ -34,9 +30,11 @@ Parent.children.forEach(child => {
     }
 });
 
+//Recursive Aproach
 
+// const childNodes = [6,6,6,6,6,6];
 
-
+// recursiveBirth(Parent, childNodes);
 
 
 

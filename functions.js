@@ -31,3 +31,47 @@ function drawCircle(x, y, radius = 10, color = rngColor()){
     c.closePath();
     c.fill();
 }
+
+// what pronouns will we use huh? xd
+function recursiveBirth(unknownGenderParent, generations, radius){
+    let gen = generations.length;
+    let r = radius;
+
+    while(gen){
+        gen--;
+
+        for(let i = 0; i < gen; i++){
+
+            let x = r * Math.cos( (i* ( 360/generations[gen] )) * Math.PI / 180);
+            let y = r * Math.sin( (i* ( 360/generations[gen] )) * Math.PI / 180);
+
+            unknownGenderParent.createChild(
+                x + unknownGenderParent.x, 
+                y + unknownGenderParent.y);
+
+        }
+
+    }
+}
+
+// const childNodes = [6,6,6,6,6,6];
+// recursiveBirth(Parent, childNodes);
+
+//maybe we should destructure the Parent with children[] prop 
+//and createChild() *generation[gen] for every empty childless Parent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

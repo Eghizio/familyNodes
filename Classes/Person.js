@@ -1,14 +1,15 @@
 const Population = []; //if it would be static member variable how do we init it to 0
 
 class Person{
-    constructor(x, y){
+    constructor(x, y, radius = 10){
         this.x = x;
         this.y = y;
+        this.radius = radius;
         this.color = rngColor();
         this.children = [];
 
         Population.push(this);
-        drawCircle(this.x, this.y, 10, this.color);
+        drawCircle(this.x, this.y, radius, this.color);
     }
     
     createChild(x,y){
@@ -21,6 +22,7 @@ class Person{
 };
 
 /*
+*circles are covered by lines ( nodes are covered by edges )
 *we can make the lines draw first and then the circles with promise
 *
 *
