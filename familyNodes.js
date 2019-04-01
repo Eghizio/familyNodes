@@ -11,33 +11,35 @@ const radius = 150;
 
 let Parent = new Person(0, 0);
 
-for(let i = 0; i < parentNodes; i++){
-    //x and y are 0,0 center wise
-    let x = radius * Math.cos( (i* 360/5) * Math.PI / 180);
-    let y = radius * Math.sin( (i* 360/5) * Math.PI / 180);
-    Parent.createChild(x +Parent.x, y + Parent.y);
-}
+// for(let i = 0; i < parentNodes; i++){
+//     //x and y are 0,0 center wise
+//     let x = radius * Math.cos( (i* 360/5) * Math.PI / 180);
+//     let y = radius * Math.sin( (i* 360/5) * Math.PI / 180);
+//     Parent.createChild(x +Parent.x, y + Parent.y);
+// }
 
-//children shouldnt have kids xd where is this world goin?
-//also take care when ur googling how to kill parent without killing the children in css or smthing xD
-//Federals might knock on ur doors some day
+// //children shouldnt have kids xd where is this world goin?
+// //also take care when ur googling how to kill parent without killing the children in css or smthing xD
+// //Federals might knock on ur doors some day
 
-Parent.children.forEach(child => {
-    for(let i = 0; i < 6; i++){
-        let x = 50 * Math.cos( (i* (360/6) ) * Math.PI / 180);
-        let y = 50 * Math.sin( (i* (360/6) ) * Math.PI / 180);
-        child.createChild(x + child.x, y + child.y);
-    }
-});
+// Parent.children.forEach(child => {
+//     for(let i = 0; i < 6; i++){
+//         let x = 50 * Math.cos( (i* (360/6) ) * Math.PI / 180);
+//         let y = 50 * Math.sin( (i* (360/6) ) * Math.PI / 180);
+//         child.createChild(x + child.x, y + child.y);
+//     }
+// });
 
 //Recursive Aproach
 
+//better visibility with odd generations
 // const childNodes = [6,6,6,6,6,6];
+const childNodes = [5,5];
 
 // recursiveBirth(Parent, childNodes);
 
 
-
+rec(Parent, childNodes, 200);
 
 
 
