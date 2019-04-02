@@ -63,22 +63,23 @@ function drawCircle(x, y, radius = 10, color = rngColor()){
 
 function rec(obj, arr, radiusik){
     let generation = 1;
-    //while(generation <= arr.length){
+    while(generation <= arr.length){
         if(!obj.children.length){
             for(let i=0; i<arr[generation-1]; i++){
 
                 let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
                 let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-            
+
                 obj.createChild(x + obj.x, y + obj.y);
             }
         }
         else{
             obj.children.forEach(child => {
-                for(let i = 0; i < 6; i++){
+                for(let i=0; i<arr[generation-1]; i++){
 
                     let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
                     let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+
                     
                     child.createChild(x + child.x, y + child.y);
                     //how do we pass the child children to the function
@@ -87,10 +88,11 @@ function rec(obj, arr, radiusik){
         }
 
         generation++;
-        radiusik = radiusik*0.5; //hardcoded for now, 
+        radiusik = radiusik*0.5;
+        //radius hardcoded for now, 
         //maybe will reduce by some percentage after testing how it scales furtherto sizes and readability
         
-    //}
+    }
 }
 
 // const childNodes = [5,5];
