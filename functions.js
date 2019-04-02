@@ -84,15 +84,12 @@ function rec(obj, arr, radiusik){
 //get to start
 //repeat
 
-const recursiveBirth = (parent, generations, radius) => {
-    for(let g=0; g<generations.length; g++){
-        for(let c=0; c<generations[g]; c++){
-            let x = radius * Math.cos( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
-            let y = radius * Math.sin( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
-            generations.shift();//we cant remove the elements, expecially at the beggining
-            recursiveBirth(parent.createChild(x,y), generations, radius*0.5);
-        }
-    }
+const recursiveBirth = (parent, generations, radius, g = 0) => {
+    if(g == generations.length) return;
+        let x = radius * Math.cos( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
+        let y = radius * Math.sin( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
+        console.log(`${x} & ${y}`)
+        recursiveBirth(parent.createChild(x,y), generations, radius*0.5, g+1);
 }
 
 
