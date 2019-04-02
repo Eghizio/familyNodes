@@ -24,11 +24,6 @@ class Person{
 };
 
 /*
-*circles are covered by lines ( nodes are covered by edges )
-*we can make the lines draw first and then the circles with promise
-*
-*
-*
-*
-*
+* circles are covered by lines ( nodes are covered by edges )
+* we can make the lines draw first and then the circles with promise
 */
