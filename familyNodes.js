@@ -34,10 +34,11 @@ const radius = 200;
 //better visibility with odd generations
 // const childNodes = [6,6,6,6,6,6];
 
+//Population = 1 + 5^1 + ... + 5^n
 // const childNodes = [5,5];
 // rec(Parent, childNodes, 200);
 
-const gen = [5,5,5];
+const gen = [3,3,3,3,3,3,3];
 recursiveBirth(new Person(), gen, radius);
 
 
