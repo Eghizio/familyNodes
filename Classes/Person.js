@@ -4,7 +4,7 @@ class Person{
     constructor(x = 0, y = 0, radius = 10){
         this.x = x;
         this.y = y;
-        this.radius = radius;
+        this.radius = radius;//can be removed cause we use it only for drawing circle atm
         this.color = rngColor();
         this.children = [];
         this.parent = null;

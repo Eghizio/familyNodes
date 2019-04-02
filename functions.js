@@ -40,31 +40,31 @@ const drawCircle = (x, y, radius = 10, color = rngColor()) => {
 //and createChild() *generation[gen] for every empty childless Parent
 
 
-function rec(obj, arr, radiusik){
-    let generation = 1;
-    while(generation <= arr.length){
-        if(!obj.children.length){
-            for(let i=0; i<arr[generation-1]; i++){
-                let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-                let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-                obj.createChild(x,y);
-            }
-        }else{
-            obj.children.forEach(child => {
-                for(let i=0; i<arr[generation-1]; i++){
-                    let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-                    let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-                    child.createChild(x,y);
-                    //how do we pass the child children to the function
-                }
-            });
-        }
-        generation++;
-        radiusik = radiusik*0.5;
-        //radius hardcoded for now, 
-        //maybe will reduce by some percentage after testing how it scales furtherto sizes and readability
-    }
-}
+// function rec(obj, arr, radiusik){
+//     let generation = 1;
+//     while(generation <= arr.length){
+//         if(!obj.children.length){
+//             for(let i=0; i<arr[generation-1]; i++){
+//                 let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+//                 let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+//                 obj.createChild(x,y);
+//             }
+//         }else{
+//             obj.children.forEach(child => {
+//                 for(let i=0; i<arr[generation-1]; i++){
+//                     let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+//                     let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+//                     child.createChild(x,y);
+//                     //how do we pass the child children to the function
+//                 }
+//             });
+//         }
+//         generation++;
+//         radiusik = radiusik*0.5;
+//         //radius hardcoded for now, 
+//         //maybe will reduce by some percentage after testing how it scales furtherto sizes and readability
+//     }
+// }
 
 // const childNodes = [5,5];
 // rec(Parent, childNodes, 200);
@@ -86,10 +86,12 @@ function rec(obj, arr, radiusik){
 
 const recursiveBirth = (parent, generations, radius, g = 0) => {
     if(g == generations.length) return;
-        let x = radius * Math.cos( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
-        let y = radius * Math.sin( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
-        console.log(`${x} & ${y}`)
+    for(let i=0; i<generations[g]; i++){
+        let x = radius * Math.cos( (i * ( 360/generations[g] )) * Math.PI / 180);
+        let y = radius * Math.sin( (i * ( 360/generations[g] )) * Math.PI / 180);
+        // console.log(`${x} & ${y} : ${generations[g]}`)
         recursiveBirth(parent.createChild(x,y), generations, radius*0.5, g+1);
+    }
 }
 
 
