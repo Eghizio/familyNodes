@@ -6,10 +6,9 @@ c.translate(canvas.width/2, canvas.height/2);
 
 //Inital simulation values
 const parentNodes = 5;
-const radius = 150;
+const radius = 200;
 
-
-let Parent = new Person(0, 0);
+// let Parent = new Person(0, 0);
 
 // for(let i = 0; i < parentNodes; i++){
 //     //x and y are 0,0 center wise
@@ -34,12 +33,12 @@ let Parent = new Person(0, 0);
 
 //better visibility with odd generations
 // const childNodes = [6,6,6,6,6,6];
-const childNodes = [5,5];
 
-// recursiveBirth(Parent, childNodes);
+// const childNodes = [5,5];
+// rec(Parent, childNodes, 200);
 
-
-rec(Parent, childNodes, 200);
+const gen = [5,5,5];
+recursiveBirth(new Person(), gen, radius);
 
 
 

@@ -2,7 +2,7 @@
 //I'll try to split it in different files as much as I can
 
 //we can also do the spectrum, which in OOP version will be better looking and trackable
-function rngColor(){
+const rngColor = () => {
     var Color = "#";
     for(let t = 0; t < 3; t++)
     {
@@ -15,9 +15,7 @@ function rngColor(){
 }
 
 //c is a canvas context
-const debug = true;
-//debug to slow down the process
-function drawLine(color, endX, endY, startX = 0, startY = 0){
+const drawLine = (color, endX, endY, startX = 0, startY = 0) => {
     c.strokeStyle = color;
     c.beginPath();
     c.moveTo(startX, startY);
@@ -26,33 +24,14 @@ function drawLine(color, endX, endY, startX = 0, startY = 0){
     c.stroke();
 }
 
-function drawCircle(x, y, radius = 10, color = rngColor()){
+const drawCircle = (x, y, radius = 10, color = rngColor()) => {
     c.fillStyle = color;
     c.beginPath();
     c.arc(x,y, radius, 0, Math.PI*2);
     c.closePath();
     c.fill();
 }
-
-// what pronouns will we use huh? xd
-// function recursiveBirth(unknownGenderParent, generations, radius){
-//     let gen = generations.length;
-//     let r = radius;
-
-//     while(gen){
-//         gen--;
-
-//         for(let i = 0; i < gen; i++){
-
-//             let x = r * Math.cos( (i* ( 360/generations[gen] )) * Math.PI / 180);
-//             let y = r * Math.sin( (i* ( 360/generations[gen] )) * Math.PI / 180);
-
-//             unknownGenderParent.createChild(
-//                 x + unknownGenderParent.x, 
-//                 y + unknownGenderParent.y);
-//         }
-//     }
-// }
+//c is no longer a canvas context
 
 // const childNodes = [6,6,6,6,6,6];
 // recursiveBirth(Parent, childNodes);
@@ -66,32 +45,24 @@ function rec(obj, arr, radiusik){
     while(generation <= arr.length){
         if(!obj.children.length){
             for(let i=0; i<arr[generation-1]; i++){
-
                 let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
                 let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-
-                obj.createChild(x + obj.x, y + obj.y);
+                obj.createChild(x,y);
             }
-        }
-        else{
+        }else{
             obj.children.forEach(child => {
                 for(let i=0; i<arr[generation-1]; i++){
-
                     let x = radiusik * Math.cos( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
                     let y = radiusik * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
-
-                    
-                    child.createChild(x + child.x, y + child.y);
+                    child.createChild(x,y);
                     //how do we pass the child children to the function
                 }
             });
         }
-
         generation++;
         radiusik = radiusik*0.5;
         //radius hardcoded for now, 
         //maybe will reduce by some percentage after testing how it scales furtherto sizes and readability
-        
     }
 }
 
@@ -99,14 +70,30 @@ function rec(obj, arr, radiusik){
 // rec(Parent, childNodes, 200);
 
 
+//NEW APPROACH
+// i=0 => x=radius, y=0
+// let x = radius * Math.cos( (i* ( 360/childrenInThisGeneration )) * Math.PI / 180);
+// let y = radius * Math.sin( (i* ( 360/arr[generation-1] )) * Math.PI / 180);
+// 0 => howManyGenerations for ex: [5,5] 0 1 
 
+// Pattern
+// createChild => createChild until last gen cap
+// get to the start
+// check if childrenInThisGeneration reached (probably not)
+// createChild => createChild until last gen cap 
+//get to start
+//repeat
 
-
-
-
-
-
-
+const recursiveBirth = (parent, generations, radius) => {
+    for(let g=0; g<generations.length; g++){
+        for(let c=0; c<generations[g]; c++){
+            let x = radius * Math.cos( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
+            let y = radius * Math.sin( (generations[g]* ( 360/generations[g] )) * Math.PI / 180);
+            generations.shift();//we cant remove the elements, expecially at the beggining
+            recursiveBirth(parent.createChild(x,y), generations, radius*0.5);
+        }
+    }
+}
 
 
 
