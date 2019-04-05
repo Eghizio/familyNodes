@@ -10,7 +10,7 @@ class Person{
         this.parent = null;
 
         Population.push(this);
-        // drawCircle(this.x, this.y, radius, this.color);
+        drawCircle(this.x, this.y, radius, this.color);
     }
     
     createChild(x,y){

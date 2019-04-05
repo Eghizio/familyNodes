@@ -10,7 +10,7 @@ c.translate(canvas.width/2, canvas.height/2);
 //Population = 1 + 5^1 + ... + 5^n
 
 //Modify gen array and radius for different output
-const gen = [3,3,3,3,3,3,3,3,3,3];
+const gen = [3,3];
 const radius = 200;
 
 recursiveBirth(new Person(), gen, radius);
@@ -18,9 +18,11 @@ recursiveBirth(new Person(), gen, radius);
 window.addEventListener('DOMContentLoaded', (e) => {
     document.body.style.margin = 0;
 
-    //maybe we shall try currying?
-    document.body.onmousemove = (position = {x: e.clientX, y: e.clientY}) => 
-        hover(position);
+    //maybe we shall implement currying?
+    document.body.onmousemove = e => hover(translatePosition(trackMousePosition(e)));
+
+    // document.body.onmousemove = (position = {x: e.clientX, y: e.clientY}) => 
+    //     hover(position);
 
     Population.forEach(parent => parent.connectChildren());
 });
