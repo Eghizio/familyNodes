@@ -44,4 +44,18 @@ const recursiveBirth = (parent, generations, radius, g = 0) => {
 }
 
 
+//document.body.onmousemove = e => trackMousePosition(e) => hover(position);
+/*
 
+*/
+const trackMousePosition = (e) => ( { x: e.clientX, y: e.clientY } );
+
+//destructure and modify? filter?
+const translatePosition = (e) => translatedPosition = {
+    x: trackMousePosition(e).x - window.innerWidth,
+    y: trackMousePosition(e).y - window.innerHeight
+}
+
+const hover = (e) => {
+    console.log(`${trackMousePosition(e).x } : ${trackMousePosition(e).y}`);
+}

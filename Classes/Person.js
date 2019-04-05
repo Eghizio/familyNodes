@@ -10,7 +10,7 @@ class Person{
         this.parent = null;
 
         Population.push(this);
-        drawCircle(this.x, this.y, radius, this.color);
+        // drawCircle(this.x, this.y, radius, this.color);
     }
     
     createChild(x,y){
@@ -18,8 +18,17 @@ class Person{
         newChild.parent = this;
         this.children.push(newChild);
 
-        drawLine(newChild.color, newChild.x, newChild.y, this.x, this.y);
+        // drawLine(newChild.color, newChild.x, newChild.y, this.x, this.y);
         return newChild;
+    }
+
+    connectChildren(){
+        if(this.children.length)
+            this.children.forEach((child, i, children) => {
+                if(i == children.length - 1)    i = -1;
+                
+                drawLine(this.color, children[i+1].x, children[i+1].y, child.x, child.y);
+            });
     }
 };
 
