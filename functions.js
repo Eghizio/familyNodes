@@ -56,6 +56,15 @@ const translatePosition = ({x,y}) => ({
     y: y - window.innerHeight/2
 });
 
-const hover = ({x,y}) =>  {
+const hover = ({x,y}, p) =>  {
     console.log(`${x } : ${y}`);
+    // let collision = Math.sqrt((x - p.x)*(x - p.x) + (y - p.y)*(y - p.y)) <= p.radius ? true : false;
+    // if(collision){
+    //     console.log(p);
+    // }
 }
+//filter the Person objects based on the distance?
+//Math.sqrt((x - p.x)*(x - p.x) + (y - p.y)*(y - p.y)) <= p.radius
+
+
+// const isHovering = (e) => c.isPointInPath(e.clientX - window.innerWidth/2, e.clientY - window.innerHeight/2)
