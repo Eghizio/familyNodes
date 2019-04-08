@@ -7,7 +7,7 @@ c.canvas.height = window.innerHeight;
 c.translate(canvas.width/2, canvas.height/2); 
 
 //better visibility with odd generations
-//Population = 1 + 5^1 + ... + 5^n
+//Population = Σ g[n]^n
 
 //Modify gen array and radius for different output
 const gen = [3,3];
@@ -19,7 +19,8 @@ window.addEventListener('DOMContentLoaded', (e) => {
     document.body.style.margin = 0;
 
     //maybe we shall implement currying?
-    document.body.onmousemove = e => hover(translatePosition(trackMousePosition(e)));
+    document.body.onmousemove = e => pipe([trackMousePosition(e),translatePosition,hover]);
+    //hover(translatePosition(trackMousePosition(e)));
 
     // document.body.onmousemove = (position = {x: e.clientX, y: e.clientY}) => 
     //     hover(position);

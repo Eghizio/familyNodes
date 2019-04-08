@@ -48,6 +48,10 @@ const recursiveBirth = (parent, generations, radius, g = 0) => {
 /*
 
 */
+
+//kinda streams
+const pipe = (functions) => functions.reduce((el, fn) => el = fn(el));
+
 const trackMousePosition = (e) => ( { x: e.clientX, y: e.clientY } );
 
 //destructure and modify? filter?
